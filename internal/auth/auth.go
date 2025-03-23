@@ -13,7 +13,7 @@ func GetAPIKey(headers http.Header) (string, error) {
     authHeader := headers.Get("Authorization")
     if authHeader == "" {
         return "", ErrNoAuthHeaderIncluded
-    
+    }
 
     // Use strings.Fields to handle multiple spaces properly
     splitAuth := strings.Fields(authHeader)
