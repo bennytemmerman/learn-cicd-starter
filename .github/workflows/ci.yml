@@ -35,4 +35,6 @@ jobs:
           go-version: "1.23.0"
 
       - name: Format Check
-        run: go fmt ./... && git diff --exit-code || (echo "Code is not formatted properly. Run 'go fmt ./...' and commit the changes." && exit 1)
+        run: |
+          go fmt ./...
+          test -z "$(git diff)" || (echo "Code is not formatted properly. Run 'go fmt ./...' and commit the changes." && exit 1)
