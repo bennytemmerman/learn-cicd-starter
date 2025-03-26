@@ -38,3 +38,9 @@ jobs:
         run: |
           go fmt ./...
           test -z "$(git diff)" || (echo "Code is not formatted properly. Run 'go fmt ./...' and commit the changes." && exit 1)
+
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: staticcheck
+        run: staticcheck ./...
